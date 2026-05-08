@@ -1,0 +1,281 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Oh KAY Gamers"
+			description="Narrative-based indie horror games by Kay — stories that pull you in and don't let go."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main class="home">
+
+			<!-- Hero -->
+			<section class="hero">
+				<p class="eyebrow">Oh KAY Gamers</p>
+				<h1>Narrative-Based Games</h1>
+				<p class="tagline">Stories that live inside you long after the screen goes dark.</p>
+			</section>
+
+			<!-- Intro -->
+			<section class="intro-section">
+				<div class="intro-card">
+					<p class="intro-text">
+						I am a writer, a streamer, and more recently now a game developer.
+						Hello, my name is Kay, and I tend to go by <strong>Kay_1o1</strong> within the online world.
+						I love stories, and truthfully game development is just a visual way to make the stories
+						in my head come to life — while actively involving the people playing them.
+					</p>
+					<div class="intro-links">
+						<a href="/games" class="btn btn-primary">See the Games</a>
+						<a href="/about" class="btn btn-ghost">More About Me</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- What drives the games -->
+			<section class="drive-section">
+				<div class="section-label">
+					<span>◈</span> The Goal
+				</div>
+				<div class="drive-grid">
+					<div class="drive-card">
+						<div class="drive-icon">✦</div>
+						<h3>Story First</h3>
+						<p>Every game starts with a question — what do I want the player to <em>feel</em>? The mechanics follow the narrative, not the other way around.</p>
+					</div>
+					<div class="drive-card">
+						<div class="drive-icon">✦</div>
+						<h3>Player Involvement</h3>
+						<p>Games are the one medium where the audience is not just watching — they are inside the story, making choices, experiencing consequences.</p>
+					</div>
+					<div class="drive-card">
+						<div class="drive-icon">✦</div>
+						<h3>Stories That Stay</h3>
+						<p>The goal is always the same: make something that lingers. A feeling, a moment, an image that follows you out of the game.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- CTA to games -->
+			<section class="cta-section">
+				<div class="cta-inner">
+					<h2>Ready to Step In?</h2>
+					<p>From psychological horror on Steam to short experiences on itch.io — find something to play.</p>
+					<a href="/games" class="btn btn-primary">Browse the Games →</a>
+				</div>
+			</section>
+
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.home {
+		width: 860px;
+		max-width: calc(100% - 2em);
+		margin: auto;
+		padding: 0 1em 5em;
+	}
+
+	/* ── Hero ── */
+	.hero {
+		text-align: center;
+		padding: 5em 1em 4em;
+		border-bottom: 1px solid rgba(139,0,0,0.15);
+		margin-bottom: 3.5em;
+	}
+
+	.eyebrow {
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 0.72em;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0 0 0.8em;
+	}
+
+	.hero h1 {
+		font-size: 3.8em;
+		margin: 0 0 0.4em;
+		text-shadow: 0 0 50px rgba(139,0,0,0.25);
+		line-height: 1.1;
+	}
+
+	.tagline {
+		font-size: 1.1em;
+		color: var(--gray-text);
+		max-width: 460px;
+		margin: 0 auto;
+		font-style: italic;
+	}
+
+	/* ── Intro ── */
+	.intro-section {
+		margin-bottom: 4em;
+	}
+
+	.intro-card {
+		background: var(--bg-card);
+		border: 1px solid rgba(139,0,0,0.2);
+		border-radius: 10px;
+		padding: 2.5em;
+	}
+
+	.intro-text {
+		font-size: 1.1em;
+		line-height: 1.85;
+		color: var(--gray-text);
+		margin: 0 0 1.8em;
+		max-width: 680px;
+	}
+
+	.intro-text strong {
+		color: var(--accent-bright);
+	}
+
+	.intro-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8em;
+	}
+
+	/* ── Drive Section ── */
+	.drive-section {
+		margin-bottom: 4em;
+	}
+
+	.section-label {
+		display: flex;
+		align-items: center;
+		gap: 0.5em;
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 0.7em;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin-bottom: 1.4em;
+		padding-bottom: 0.6em;
+		border-bottom: 1px solid rgba(139,0,0,0.15);
+	}
+
+	.drive-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+		gap: 1.4em;
+	}
+
+	.drive-card {
+		background: var(--bg-card);
+		border: 1px solid rgba(139,0,0,0.15);
+		border-radius: 10px;
+		padding: 1.8em;
+		transition: border-color 0.25s, box-shadow 0.25s;
+	}
+
+	.drive-card:hover {
+		border-color: rgba(139,0,0,0.4);
+		box-shadow: 0 4px 24px rgba(139,0,0,0.1);
+	}
+
+	.drive-icon {
+		color: var(--accent);
+		font-size: 1.3em;
+		margin-bottom: 0.6em;
+		opacity: 0.7;
+	}
+
+	.drive-card h3 {
+		font-size: 1.1em;
+		margin: 0 0 0.5em;
+	}
+
+	.drive-card p {
+		font-size: 0.9em;
+		line-height: 1.7;
+		margin: 0;
+		color: var(--gray-text);
+	}
+
+	.drive-card p em {
+		color: var(--white);
+		font-style: italic;
+	}
+
+	/* ── CTA ── */
+	.cta-section {
+		margin-top: 1em;
+	}
+
+	.cta-inner {
+		text-align: center;
+		padding: 3em 2em;
+		background: linear-gradient(135deg, rgba(139,0,0,0.07) 0%, transparent 60%);
+		border: 1px solid rgba(139,0,0,0.15);
+		border-radius: 12px;
+	}
+
+	.cta-inner h2 {
+		font-size: 2em;
+		margin: 0 0 0.5em;
+	}
+
+	.cta-inner p {
+		max-width: 420px;
+		margin: 0 auto 1.8em;
+		font-size: 0.95em;
+	}
+
+	/* ── Buttons ── */
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		padding: 0.65em 1.5em;
+		border-radius: 6px;
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 0.8em;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-decoration: none;
+		transition: all 0.2s;
+		white-space: nowrap;
+	}
+
+	.btn-primary {
+		background: var(--accent);
+		color: var(--white);
+		border: 1px solid rgba(185,28,28,0.5);
+	}
+	.btn-primary:hover {
+		background: var(--accent-bright);
+		color: var(--white);
+		box-shadow: 0 0 18px rgba(139,0,0,0.5);
+		text-shadow: none;
+	}
+
+	.btn-ghost {
+		background: transparent;
+		color: var(--gray-text);
+		border: 1px solid rgba(139,0,0,0.3);
+	}
+	.btn-ghost:hover {
+		border-color: var(--accent);
+		color: var(--white);
+		text-shadow: none;
+	}
+
+	/* ── Responsive ── */
+	@media (max-width: 600px) {
+		.hero h1 { font-size: 2.5em; }
+		.drive-grid { grid-template-columns: 1fr; }
+		.intro-links { flex-direction: column; }
+	}
+</style>

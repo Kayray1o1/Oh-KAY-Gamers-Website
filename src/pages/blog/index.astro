@@ -1,0 +1,74 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Blog | Oh KAY Gamers" description="Dev logs, game updates, and behind-the-scenes posts — coming soon." />
+	</head>
+	<body>
+		<Header />
+		<main class="blog-page">
+			<div class="coming-soon">
+				<p class="eyebrow">Oh KAY Gamers</p>
+				<h1>Blog</h1>
+				<p class="message">Dev logs, game updates, and behind-the-scenes posts are on the way.</p>
+				<span class="tag">Coming Soon</span>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.blog-page {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 60vh;
+		padding: 2em 1em;
+	}
+
+	.coming-soon {
+		text-align: center;
+		max-width: 480px;
+	}
+
+	.eyebrow {
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 0.72em;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0 0 0.8em;
+	}
+
+	.coming-soon h1 {
+		font-size: 3.2em;
+		margin: 0 0 0.4em;
+		text-shadow: 0 0 40px rgba(139,0,0,0.2);
+	}
+
+	.message {
+		font-size: 1em;
+		color: var(--gray-text);
+		line-height: 1.7;
+		margin: 0 0 1.8em;
+	}
+
+	.tag {
+		display: inline-block;
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 0.72em;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		padding: 0.4em 1.2em;
+		border: 1px solid rgba(139,0,0,0.35);
+		border-radius: 4px;
+		color: var(--accent);
+		background: rgba(139,0,0,0.06);
+	}
+</style>

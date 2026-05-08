@@ -1,0 +1,43 @@
+---
+const today = new Date();
+---
+
+<footer>
+	<div class="footer-inner">
+		<span class="footer-brand"><span class="bracket">[</span>Oh KAY Gamers<span class="bracket">]</span></span>
+		<span class="footer-copy">&copy; {today.getFullYear()} — All rights reserved.</span>
+	</div>
+</footer>
+
+<style>
+	footer {
+		padding: 2em 1.5em;
+		background: var(--bg-nav);
+		border-top: 1px solid rgba(139, 0, 0, 0.25);
+		color: var(--gray-text);
+		font-size: 0.9em;
+	}
+
+	.footer-inner {
+		max-width: 760px;
+		margin: auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.5em;
+	}
+
+	.footer-brand {
+		font-weight: 700;
+		color: var(--white);
+	}
+
+	.bracket {
+		color: var(--accent);
+	}
+
+	@media (max-width: 480px) {
+		.footer-inner { justify-content: center; text-align: center; }
+	}
+</style>
