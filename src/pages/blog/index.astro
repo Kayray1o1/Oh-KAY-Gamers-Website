@@ -1,23 +1,56 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title="Blog | Oh KAY Gamers" description="Dev logs, game updates, and behind-the-scenes posts — coming soon." />
+		<BaseHead title="Blog | Oh KAY Gamers" description="Dev logs, origin stories, and behind-the-scenes posts from Oh KAY Gamers." />
 	</head>
 	<body>
 		<Header />
 		<main class="blog-page">
-			<div class="coming-soon">
+			<div class="blog-header">
 				<p class="eyebrow">Oh KAY Gamers</p>
 				<h1>Blog</h1>
-				<p class="message">Dev logs, game updates, and behind-the-scenes posts are on the way.</p>
-				<span class="tag">Coming Soon</span>
+				<p class="subtitle">Dev logs, origin stories, and everything in between.</p>
 			</div>
+
+			<ul class="post-list">
+				{posts.map((post) => (
+					<li>
+						<a href={`/blog/${post.id}/`} class="post-card">
+							{post.data.heroImage && (
+								<div class="post-thumb">
+									<img src={post.data.heroImage.src} alt={post.data.title} />
+								</div>
+							)}
+							<div class="post-info">
+								{post.data.category && (
+									<span class="post-category">{post.data.category}</span>
+								)}
+								<h2 class="post-title">{post.data.title}</h2>
+								<p class="post-desc">{post.data.description}</p>
+								<p class="post-date"><FormattedDate date={post.data.pubDate} /></p>
+								{post.data.tags && (
+									<div class="post-tags">
+										{post.data.tags.slice(0, 4).map(tag => (
+											<span class="tag">{tag}</span>
+										))}
+									</div>
+								)}
+							</div>
+						</a>
+					</li>
+				))}
+			</ul>
 		</main>
 		<Footer />
 	</body>
@@ -25,16 +58,17 @@ import Header from '../../components/Header.astro';
 
 <style>
 	.blog-page {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		min-height: 60vh;
-		padding: 2em 1em;
+		width: 860px;
+		max-width: calc(100% - 2em);
+		margin: auto;
+		padding: 0 1em 5em;
 	}
 
-	.coming-soon {
+	.blog-header {
 		text-align: center;
-		max-width: 480px;
+		padding: 4em 1em 3em;
+		border-bottom: 1px solid rgba(139,0,0,0.15);
+		margin-bottom: 3em;
 	}
 
 	.eyebrow {
@@ -46,29 +80,110 @@ import Header from '../../components/Header.astro';
 		margin: 0 0 0.8em;
 	}
 
-	.coming-soon h1 {
+	.blog-header h1 {
 		font-size: 3.2em;
 		margin: 0 0 0.4em;
 		text-shadow: 0 0 40px rgba(139,0,0,0.2);
 	}
 
-	.message {
+	.subtitle {
 		font-size: 1em;
 		color: var(--gray-text);
-		line-height: 1.7;
-		margin: 0 0 1.8em;
+		margin: 0;
+		font-style: italic;
+	}
+
+	.post-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.8em;
+	}
+
+	.post-card {
+		display: flex;
+		gap: 1.8em;
+		background: var(--bg-card);
+		border: 1px solid rgba(139,0,0,0.15);
+		border-radius: 10px;
+		padding: 1.6em;
+		text-decoration: none;
+		transition: border-color 0.25s, box-shadow 0.25s;
+	}
+
+	.post-card:hover {
+		border-color: rgba(139,0,0,0.4);
+		box-shadow: 0 4px 24px rgba(139,0,0,0.1);
+	}
+
+	.post-thumb {
+		flex-shrink: 0;
+		width: 180px;
+		height: 120px;
+		border-radius: 6px;
+		overflow: hidden;
+	}
+
+	.post-thumb img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.post-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4em;
+	}
+
+	.post-category {
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 0.65em;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+
+	.post-title {
+		font-size: 1.3em;
+		margin: 0;
+		color: var(--white);
+	}
+
+	.post-desc {
+		font-size: 0.9em;
+		color: var(--gray-text);
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	.post-date {
+		font-size: 0.78em;
+		color: var(--gray-text);
+		opacity: 0.6;
+		margin: 0;
+	}
+
+	.post-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4em;
+		margin-top: 0.2em;
 	}
 
 	.tag {
-		display: inline-block;
-		font-family: 'Cinzel', Georgia, serif;
-		font-size: 0.72em;
-		letter-spacing: 0.15em;
-		text-transform: uppercase;
-		padding: 0.4em 1.2em;
-		border: 1px solid rgba(139,0,0,0.35);
+		font-size: 0.68em;
+		padding: 0.2em 0.7em;
+		border: 1px solid rgba(139,0,0,0.3);
 		border-radius: 4px;
 		color: var(--accent);
 		background: rgba(139,0,0,0.06);
+	}
+
+	@media (max-width: 600px) {
+		.post-card { flex-direction: column; }
+		.post-thumb { width: 100%; height: 180px; }
 	}
 </style>
