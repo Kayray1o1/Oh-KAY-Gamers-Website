@@ -45,6 +45,39 @@ const recentPosts = (await getCollection('blog'))
 				</div>
 			</section>
 
+			<!-- Featured: Paranoia Vol. I (impromptu promo) -->
+			<section class="featured-promo">
+				<div class="section-label">
+					<span>⬡</span> Now on Steam
+				</div>
+				<a
+					href="https://store.steampowered.com/app/4503610/Paranoia_Vol_I/"
+					target="_blank"
+					rel="noopener"
+					class="promo-card"
+					aria-label="Paranoia Vol. I on Steam"
+				>
+					<div class="promo-thumb">
+						<img src="/images/paranoia-cover.png" alt="Paranoia Vol. I — game cover" />
+					</div>
+					<div class="promo-body">
+						<p class="promo-eyebrow">Flagship Title</p>
+						<h2 class="promo-title">Paranoia <span class="vol">Vol. I</span></h2>
+						<p class="promo-desc">A psychological horror experience that pushes you to question what is real — and what your mind has invented.</p>
+						<div class="promo-ctas">
+							<span class="btn btn-primary">Wishlist on Steam →</span>
+							<a
+								href="https://store.steampowered.com/app/4658380/Paranoia_Vol_I_Demo/"
+								target="_blank"
+								rel="noopener"
+								class="btn btn-ghost"
+								onclick="event.stopPropagation()"
+							>Play the Demo</a>
+						</div>
+					</div>
+				</a>
+			</section>
+
 			<!-- What drives the games -->
 			<section class="drive-section">
 				<div class="section-label">
@@ -181,6 +214,91 @@ const recentPosts = (await getCollection('blog'))
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.8em;
+	}
+
+	/* ── Featured Promo (Paranoia Vol. I) ── */
+	.featured-promo {
+		margin-bottom: 4em;
+	}
+
+	.promo-card {
+		display: flex;
+		gap: 1.6em;
+		align-items: stretch;
+		background: linear-gradient(135deg, rgba(139,0,0,0.10) 0%, var(--bg-card) 70%);
+		border: 1px solid rgba(139,0,0,0.25);
+		border-radius: 12px;
+		padding: 1.4em;
+		text-decoration: none;
+		color: inherit;
+		transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.promo-card:hover {
+		border-color: rgba(139,0,0,0.55);
+		box-shadow: 0 8px 32px rgba(139,0,0,0.18);
+		transform: translateY(-2px);
+	}
+
+	.promo-thumb {
+		flex-shrink: 0;
+		width: 200px;
+		border-radius: 8px;
+		overflow: hidden;
+		align-self: center;
+	}
+
+	.promo-thumb img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	.promo-body {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 0.6em;
+	}
+
+	.promo-eyebrow {
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 0.65em;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0;
+	}
+
+	.promo-title {
+		font-size: 1.8em;
+		margin: 0;
+		line-height: 1.1;
+	}
+
+	.promo-title .vol {
+		font-size: 0.65em;
+		color: var(--accent-bright);
+		font-style: italic;
+		font-weight: 400;
+		letter-spacing: 0.05em;
+	}
+
+	.promo-desc {
+		font-size: 0.95em;
+		line-height: 1.6;
+		color: var(--gray-text);
+		margin: 0;
+	}
+
+	.promo-ctas {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.7em;
+		margin-top: 0.6em;
 	}
 
 	/* ── Drive Section ── */
@@ -390,5 +508,9 @@ const recentPosts = (await getCollection('blog'))
 		.hero h1 { font-size: 2.5em; }
 		.drive-grid { grid-template-columns: 1fr; }
 		.intro-links { flex-direction: column; }
+		.promo-card { flex-direction: column; gap: 1em; }
+		.promo-thumb { width: 100%; max-width: 240px; align-self: center; }
+		.promo-body { text-align: center; align-items: center; }
+		.promo-ctas { justify-content: center; }
 	}
 </style>
