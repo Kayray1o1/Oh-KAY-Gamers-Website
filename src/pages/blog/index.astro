@@ -43,7 +43,7 @@ const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
 			<ul class="post-list">
 				{posts.map((post) => (
 					<li>
-						<a href={`/blog/${post.id}/`} class="post-card">
+						<div class="post-card">
 							{post.data.heroImage && (
 								<div class="post-thumb">
 									<img src={post.data.heroImage.src} alt={post.data.title} />
@@ -54,10 +54,9 @@ const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
 									<a
 										href={`/blog/category/${post.data.category.toLowerCase().replace(/\s+/g, '-')}/`}
 										class="post-category"
-										onclick="event.stopPropagation()"
 									>{post.data.category}</a>
 								)}
-								<h2 class="post-title">{post.data.title}</h2>
+								<h2 class="post-title"><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2>
 								<p class="post-desc">{post.data.description}</p>
 								<p class="post-date"><FormattedDate date={post.data.pubDate} /></p>
 								{post.data.tags && (
@@ -68,7 +67,7 @@ const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
 									</div>
 								)}
 							</div>
-						</a>
+						</div>
 					</li>
 				))}
 			</ul>
@@ -124,6 +123,7 @@ const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
 	}
 
 	.post-card {
+		position: relative;
 		display: flex;
 		gap: 1.8em;
 		background: var(--bg-card);
@@ -137,6 +137,10 @@ const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
 	.post-card:hover {
 		border-color: rgba(139,0,0,0.4);
 		box-shadow: 0 4px 24px rgba(139,0,0,0.1);
+	}
+
+	.post-card:hover .post-title a {
+		color: var(--accent);
 	}
 
 	.post-thumb {
@@ -211,6 +215,8 @@ const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
 	}
 
 	.post-category {
+		position: relative;
+		z-index: 1;
 		font-family: 'Cinzel', Georgia, serif;
 		font-size: 0.65em;
 		letter-spacing: 0.18em;
@@ -234,6 +240,19 @@ const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
 		font-size: 1.3em;
 		margin: 0;
 		color: var(--white);
+	}
+
+	.post-title a {
+		color: inherit;
+		text-decoration: none;
+		transition: color 0.2s;
+	}
+
+	.post-title a::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: 10px;
 	}
 
 	.post-desc {

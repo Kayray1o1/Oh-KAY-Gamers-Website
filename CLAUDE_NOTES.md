@@ -11,6 +11,17 @@
   - `the-vision.jpg` — before "Is It Worth It?" section (source: facusio-fantasy-world-7446064.jpg)
 - Verified live on localhost:4321: post 200, index 200, /blog/category/origin-stories/ 200, both inline images 200.
 
+### Fix: blog card "only image is clickable" bug
+- **Root cause**: Card markup had nested `<a>` (outer `.post-card` wrapping inner `.post-category`). HTML5 forbids nested anchors — browsers silently close the outer `<a>` when they hit the inner one. Result: image was inside the outer link, but title/desc/date/tags after the category chip ended up *outside* the link in the DOM. So only the image was clickable.
+- **Fix**: Switched to the standard "card with title link expanded via `::after`" pattern.
+  - `.post-card` is now a `<div>` (not an `<a>`) with `position: relative`.
+  - Post title is now `<h2 class="post-title"><a href=...>{title}</a></h2>` — title text is the actual semantic link (good for a11y + SEO).
+  - `.post-title a::after { content:''; position:absolute; inset:0; }` expands the title link's click area over the entire card — clicking image, description, date, or empty space all navigate to the post.
+  - `.post-category` got `position: relative; z-index: 1` so it stays above the `::after` and remains independently clickable.
+  - Removed now-unnecessary `onclick="event.stopPropagation()"` from `.post-category`.
+- **Files**: `src/pages/blog/index.astro`, `src/pages/blog/category/[category].astro` (identical fix in both — same card pattern).
+- **Home page**: also uses a card-link, but doesn't nest an inner `<a>`, so it already worked — left alone.
+
 ## Previous session (2026-05-16)
 Added "Paranoia — Devlog #1" + launched **Devlogs** category — live & verified, committed (edb4bf4)
 
