@@ -1,7 +1,18 @@
 # Oh KAY Gamers — Claude Session Notes
 
-## Last Session: 2026-05-14
-## Status: Added "Idols of Ash" spotlight post — live & verified
+## Last Session: 2026-05-26
+## Status: Added "The Hefty Workload of Making a Game" — second Origin Stories post — live on localhost & verified. Not yet committed/pushed (Kay to review first).
+
+## What was changed this session (2026-05-26)
+- Added `src/content/blog/hefty-workload-of-making-a-game.md` — "The Hefty Workload of Making a Game". Origin Stories category, 2nd of its kind. Light spelling/grammar polish on Kay's draft (preserved voice — kept her dashes, parenthetical asides, "And"-starts).
+- Added `src/assets/blog/hefty-workload-hero.jpg` (matrix code, source: wastedgeneration-digital-8280790.jpg).
+- Added 2 inline images in `public/images/blog/hefty-workload-of-making-a-game/`:
+  - `solo-dev.png` — after "Life as an Indie Developer" section (source: mzaya_blan-boy-9087310_1280.png)
+  - `the-vision.jpg` — before "Is It Worth It?" section (source: facusio-fantasy-world-7446064.jpg)
+- Verified live on localhost:4321: post 200, index 200, /blog/category/origin-stories/ 200, both inline images 200.
+
+## Previous session (2026-05-16)
+Added "Paranoia — Devlog #1" + launched **Devlogs** category — live & verified, committed (edb4bf4)
 
 ## How YouTube embeds work (for Kay) — IMPORTANT
 **Use `.mdx`, not `.md`, for any post with YouTube videos.**
@@ -28,13 +39,19 @@ Fix: kill node, delete `.astro/data-store.json` + `node_modules/.vite`, restart 
 - **Blog posts (`.md`/`.mdx`):** Every external link auto-gets `target="_blank" rel="noopener noreferrer"` via `rehype-external-links`. Internal links (relative paths) stay in same tab.
 - **Astro page files (`.astro`):** Hand-written `<a>` tags need it set manually. All current ones (Header GitHub link, games.astro Steam/itch links) are correct.
 
-## What was changed this session
-- Added `src/content/blog/idols-of-ash.mdx` — "Idols of Ash" spotlight post (2 YouTube embeds, Steam links, grammar-edited from Kay's draft). No hero image yet — Kay to add `src/assets/blog/idols-of-ash-hero.jpg` + `heroImage:` frontmatter line later.
-- Corrected the YouTube-embed notes above (`.md` auto-embed does NOT work).
+## What was changed this session (2026-05-16)
+- Added `src/content/blog/paranoia-devlog-1.mdx` — "Paranoia — Devlog #1: What If My Game Fails?". Light spelling/spacing edits to Kay's draft (preserved voice). 1 YouTube embed (`R94ZsdALbpw`), Steam demo link, two section subheads added.
+- Added `src/assets/blog/paranoia-devlog-1-hero.jpg` (Kay-supplied matrix art from Downloads).
+- **New category "Devlogs"** — first post of its kind. Chip auto-renders on `/blog/` and `/blog/category/devlogs/` because the chip system is dynamic (no nav edits needed).
 
-## Verified live
-Hit `http://localhost:4321/blog/idols-of-ash/` — both YouTube players render
-(`hhyFez6TNLs`, `HxJsFNvPkzw`), Steam links present, post shows on `/blog/` index.
+## Verified live (2026-05-16)
+- `/blog/paranoia-devlog-1/` → 200, hero image renders, YouTube `R94ZsdALbpw` embed present, Steam link present.
+- `/blog/` → 200, Devlogs (1) chip shows alongside Spotlight (3) and Origin Stories (1). New post sits at top of list.
+- `/blog/category/devlogs/` → 200, lists the one post.
+
+## Previous session (2026-05-14)
+- Added `src/content/blog/idols-of-ash.mdx` — "Idols of Ash" spotlight post (2 YouTube embeds, Steam links, grammar-edited from Kay's draft).
+- Corrected the YouTube-embed notes above (`.md` auto-embed does NOT work).
 
 ## Next Steps (optional)
 - Kay to source/add a hero image for the Idols of Ash post.
