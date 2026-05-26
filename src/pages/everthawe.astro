@@ -1,0 +1,416 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="EverThawe | Oh KAY Gamers"
+			description="Door to the EverThawe — an interactive story set in the world of Neridia. A hybrid book-and-game from Oh KAY Gamers."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main class="everthawe-page">
+
+			<!-- ── HERO ── -->
+			<section class="hero">
+				<div class="hero-inner">
+					<p class="eyebrow">Neridia</p>
+					<h1>Door to the <span class="title-accent">EverThawe</span></h1>
+					<p class="tagline">
+						A hybrid book and game within the world of Neridia — read the
+						book, explore a part of the world, uncover secrets.
+					</p>
+					<div class="hero-divider">
+						<span>◆</span>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── WHAT IS IT ── -->
+			<section class="section">
+				<div class="section-label">
+					<span class="label-icon">⬡</span> Interactive Novel
+				</div>
+
+				<div class="card">
+					<p>
+						Door to the EverThawe is something that I have been quietly
+						building alongside Paranoia and Shadow Guardian. This project
+						doesn't fit within the horror catalogue, so it gets its own
+						home here.
+					</p>
+					<p>
+						It is built like a book first and a game second, as most of
+						your time will be spent reading (or listening to the audio
+						book). But you can spend time exploring the world, unlocking
+						artworks, browsing the wiki and maps. You pick up the next
+						book and unlock more from the map, more lore, and artwork.
+					</p>
+					<p>
+						It is going to be played in portrait orientation on the phone,
+						or normally via the PC. It's a book within the world. Or that
+						is the theme I am going for.
+					</p>
+				</div>
+			</section>
+
+			<!-- ── ROADMAP ── -->
+			<section class="section">
+				<div class="section-label">
+					<span class="label-icon">◆</span> Roadmap
+				</div>
+
+				<div class="card">
+					<p>
+						Currently three books (novellas) are already written and in
+						the editing process. My goal is to get a demo of how the
+						game/book is going to look — and make it available for you
+						to enjoy along with the first book, for free. You will be
+						able to download it via the Google Play Store, or access
+						it via the web — links will be provided.
+					</p>
+				</div>
+			</section>
+
+			<!-- ── STATUS & PLATFORMS ── -->
+			<section class="section">
+				<div class="section-label">
+					<span class="label-icon">◎</span> Where You'll Play It
+				</div>
+
+				<div class="status-grid">
+					<div class="card status-card">
+						<div class="badge-row">
+							<span class="badge badge-dev">In Development</span>
+						</div>
+						<h3>Status</h3>
+						<p>
+							Currently in active development. No release date yet — this
+							one is being built slowly, the way a book gets written. Follow
+							the dev blog for updates.
+						</p>
+					</div>
+
+					<div class="card status-card">
+						<div class="badge-row">
+							<span class="badge badge-platform">PC</span>
+							<span class="badge badge-platform">Android</span>
+							<span class="badge badge-platform badge-soon">WebGL · Soon</span>
+						</div>
+						<h3>Platforms</h3>
+						<p>
+							Built in Unity for Windows and Android first. A free WebGL
+							demo will land on itch.io once the first vertical slice is
+							ready to share.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── COMMON QUESTIONS ── -->
+			<section class="section">
+				<div class="section-label">
+					<span class="label-icon">✦</span> Common Questions
+				</div>
+
+				<div class="faq-list">
+					<div class="card">
+						<h3>Will there be ads on the app?</h3>
+						<p>
+							At the moment — absolutely not. It breaks the immersion.
+							There might be changes in the future, but I want to make
+							sure the ads will never interfere with the experience. But
+							there will be in-app purchases as more books become
+							available to read.
+						</p>
+						<p>
+							My hope is to also get the books available on Steam —
+							where you will be able to buy more books in the form
+							of DLCs.
+						</p>
+					</div>
+
+					<div class="card">
+						<h3>Can I support the project?</h3>
+						<p>
+							Yes! I have a Ko-Fi, and this will certainly help speed
+							up my journey. Once the demo is complete, there may be
+							other ways for you to support the project and receive
+							rewards within the book/game as well.
+						</p>
+						<div class="btn-row">
+							<a
+								href="https://ko-fi.com/kay1o1"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="btn btn-primary"
+							>
+								Support on Ko-Fi →
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── FOLLOW ── -->
+			<section class="section follow-section">
+				<div class="follow-inner">
+					<p class="eyebrow">Stay With It</p>
+					<h2>Follow the Build</h2>
+					<p class="follow-body">
+						EverThawe is going to take a while. If you want to watch a
+						book-game grow from a dock and a door into something bigger,
+						the dev blog is where it happens.
+					</p>
+					<a href="/blog" class="btn btn-primary">Read the Dev Blog →</a>
+				</div>
+			</section>
+
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.everthawe-page {
+		width: 900px;
+		max-width: calc(100% - 2em);
+		margin: auto;
+		padding: 0 1em 5em;
+	}
+
+	/* ── Hero ── */
+	.hero {
+		text-align: center;
+		padding: 5em 1em 3.5em;
+		border-bottom: 1px solid rgba(139,0,0,0.18);
+		margin-bottom: 3em;
+		position: relative;
+	}
+
+	.hero-inner {
+		max-width: 640px;
+		margin: 0 auto;
+	}
+
+	.eyebrow {
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 0.78em;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0 0 0.8em;
+	}
+
+	.hero h1 {
+		font-size: 3.6em;
+		margin: 0 0 0.5em;
+		line-height: 1.1;
+		text-shadow: 0 0 50px rgba(139,0,0,0.25);
+	}
+
+	.title-accent {
+		color: var(--accent);
+		font-style: italic;
+	}
+
+	.tagline {
+		font-size: 1.1em;
+		color: var(--gray-text);
+		line-height: 1.7;
+		font-family: 'Crimson Text', Georgia, serif;
+		font-style: italic;
+		max-width: 540px;
+		margin: 0 auto 1.6em;
+	}
+
+	.hero-divider {
+		margin-top: 1.6em;
+		color: var(--accent);
+		font-size: 1.4em;
+		opacity: 0.6;
+		letter-spacing: 0.8em;
+		padding-left: 0.8em;
+	}
+
+	/* ── Section ── */
+	.section {
+		margin-bottom: 4em;
+	}
+
+	.section-label {
+		display: flex;
+		align-items: center;
+		gap: 0.55em;
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 0.7em;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin-bottom: 1.2em;
+		padding-bottom: 0.6em;
+		border-bottom: 1px solid rgba(139,0,0,0.15);
+	}
+
+	.label-icon {
+		font-size: 1.1em;
+		opacity: 0.7;
+	}
+
+	/* ── Cards ── */
+	.card {
+		background: var(--bg-card);
+		border: 1px solid rgba(139,0,0,0.2);
+		border-radius: 10px;
+		padding: 2em 2.4em;
+		transition: border-color 0.25s, box-shadow 0.25s;
+	}
+
+	.card:hover {
+		border-color: rgba(139,0,0,0.4);
+		box-shadow: 0 4px 24px rgba(139,0,0,0.1);
+	}
+
+	.card h2 {
+		font-size: 1.8em;
+		margin: 0 0 0.6em;
+	}
+
+	.card h3 {
+		font-size: 1.3em;
+		margin: 0.5em 0 0.6em;
+	}
+
+	.card p {
+		font-size: 1.02em;
+		line-height: 1.8;
+		color: var(--gray-text);
+		margin: 0 0 1em;
+	}
+
+	.card p:last-child {
+		margin-bottom: 0;
+	}
+
+	/* ── FAQ List ── */
+	.faq-list {
+		display: flex;
+		flex-direction: column;
+		gap: 1.2em;
+	}
+
+	.faq-list .card h3 {
+		color: var(--accent);
+		font-size: 1.25em;
+		margin-top: 0;
+	}
+
+	/* ── Status Grid ── */
+	.status-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 1.5em;
+	}
+
+	.status-card p {
+		font-size: 0.95em;
+	}
+
+	/* ── Badges ── */
+	.badge-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5em;
+		margin-bottom: 0.5em;
+	}
+
+	.badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35em;
+		font-size: 0.7em;
+		font-family: 'Cinzel', Georgia, serif;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		padding: 0.25em 0.7em;
+		border-radius: 4px;
+		font-weight: 700;
+	}
+
+	.badge-dev      { background: rgba(234,179,8,0.12); color: #fbbf24; border: 1px solid rgba(234,179,8,0.25); }
+	.badge-platform { background: rgba(139,0,0,0.15); color: #e87070; border: 1px solid rgba(139,0,0,0.3); }
+	.badge-soon     { background: transparent; color: var(--gray-text); border: 1px dashed rgba(139,0,0,0.3); opacity: 0.85; }
+
+	/* ── Follow Section ── */
+	.follow-section {
+		margin-top: 2em;
+	}
+
+	.follow-inner {
+		text-align: center;
+		padding: 3.2em 2em;
+		background: linear-gradient(135deg, rgba(139,0,0,0.06) 0%, transparent 60%);
+		border: 1px solid rgba(139,0,0,0.15);
+		border-radius: 12px;
+	}
+
+	.follow-inner h2 {
+		font-size: 2em;
+		margin: 0.3em 0 0.7em;
+	}
+
+	.follow-body {
+		max-width: 500px;
+		margin: 0 auto 1.8em;
+		font-size: 1em;
+		line-height: 1.75;
+		color: var(--gray-text);
+	}
+
+	/* ── Buttons ── */
+	.btn-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8em;
+		margin-top: 0.4em;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		padding: 0.7em 1.6em;
+		border-radius: 6px;
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 0.8em;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-decoration: none;
+		transition: all 0.2s;
+	}
+
+	.btn-primary {
+		background: var(--accent);
+		color: var(--white);
+		border: 1px solid rgba(185,28,28,0.6);
+	}
+	.btn-primary:hover {
+		background: var(--accent-bright);
+		color: var(--white);
+		box-shadow: 0 0 18px rgba(139,0,0,0.5);
+		text-shadow: none;
+	}
+
+	/* ── Responsive ── */
+	@media (max-width: 600px) {
+		.hero h1 { font-size: 2.5em; }
+		.card { padding: 1.6em 1.4em; }
+		.card h2 { font-size: 1.5em; }
+		.status-grid { grid-template-columns: 1fr; }
+	}
+</style>

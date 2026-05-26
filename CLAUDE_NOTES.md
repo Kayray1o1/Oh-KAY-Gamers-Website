@@ -3,6 +3,14 @@
 ## Last Session: 2026-05-26
 ## Status: Added "The Hefty Workload of Making a Game" — second Origin Stories post — live on localhost & verified. Not yet committed/pushed (Kay to review first).
 
+## What was changed this session (2026-05-26, part 3)
+- Added dedicated **/everthawe** page (`src/pages/everthawe.astro`) for Kay's hybrid book-and-game project (Door to the EverThawe, set in the world of Neridia).
+- Added "EverThawe" nav link in `src/components/Header.astro` between Games and Blog.
+- Page structure: hero (title + tagline + divider) → The Project (placeholder description, Kay to rewrite in her voice) → The World (Neridia/EverThawe, with an atmospheric pull-quote placeholder) → Status & Platforms (In Development, PC + Android + WebGL soon) → Follow the Build CTA → blog link.
+- Visual style matches site palette (black + red accent, Cinzel + Crimson Text). Added one new visual element: atmospheric italic blockquote with left border for in-world prose excerpts.
+- Several `<!-- KAY -->` comments left in place where she should drop her own copy when ready (project description, in-world quote, etc.).
+- Verified live: /everthawe → 200, nav link renders on every page (verified on homepage).
+
 ## What was changed this session (2026-05-26)
 - Added `src/content/blog/hefty-workload-of-making-a-game.md` — "The Hefty Workload of Making a Game". Origin Stories category, 2nd of its kind. Light spelling/grammar polish on Kay's draft (preserved voice — kept her dashes, parenthetical asides, "And"-starts).
 - Added `src/assets/blog/hefty-workload-hero.jpg` (matrix code, source: wastedgeneration-digital-8280790.jpg).
