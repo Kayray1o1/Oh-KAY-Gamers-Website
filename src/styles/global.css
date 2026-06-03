@@ -134,3 +134,26 @@ hr {
 	clip-path: inset(50%);
 	white-space: nowrap;
 }
+
+/* ── Drop initial (drop cap) ──
+   Opening a paragraph with a large first letter — pulls the eye in.
+   .dropcap = opt-in on hand-written pages.
+   .prose > p:first-of-type = auto on the first paragraph of every blog post. */
+.dropcap::first-letter,
+.prose > p:first-of-type::first-letter {
+	float: left;
+	font-family: 'Cinzel', Georgia, serif;
+	font-weight: 700;
+	font-size: 3.3em;
+	line-height: 0.72;
+	margin: 0.04em 0.12em 0 0;
+	color: var(--accent-bright);
+	text-shadow: 0 0 22px rgba(139,0,0,0.35);
+}
+
+@media (max-width: 720px) {
+	.dropcap::first-letter,
+	.prose > p:first-of-type::first-letter {
+		font-size: 2.8em;
+	}
+}
