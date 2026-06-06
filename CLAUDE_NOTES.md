@@ -1,5 +1,41 @@
 # Oh KAY Gamers — Claude Session Notes
 
+## Last Session: 2026-06-04
+## Status: Link contrast fix DONE (committed+pushed cec5e16). Email marketing strategy brainstormed — planning only, nothing built.
+
+### Changes this session (2026-06-04)
+- **Link color fix** (`src/styles/global.css`, commit cec5e16, pushed): links changed from
+  `--accent` (#8b0000, ~2.1:1 contrast on black, FAILED WCAG AA) → `--accent-bright`
+  (#b91c1c, ~3.3:1). Kay chose on-brand red over full AA (#e74c3c/~5.5:1 was offered, declined).
+- Readability audit: bg #000, headings #f0e6e6 (great), body #9a8080 (OK ~5.8:1). Theme fine;
+  only links were weak. Now fixed.
+
+### Email marketing plan (BRAINSTORM — decisions made, NOT built)
+Tool: **Omnisend** (free tier ~250 contacts / 500 emails/mo to start).
+- **Two audiences, ONE Omnisend account, segmented by TAGS** (not separate lists):
+  - `gamers` — horror/game fans. Magnets: free demo (itch WebGL embed), free Steam key at launch
+    + wishlist, beta list, giveaways/sweepstakes.
+  - `readers` — **readers of Kay's FICTION** (confirmed, NOT copywriting clients). Magnets: free
+    Book 1/prequel, discount on next book, deleted scenes/bonus content.
+  - Each page shows only its form → auto-tags the subscriber.
+- **Series funnel** (Kay's idea, refined): each book sells the next. Book 1 = cheap/free hook →
+  "join list + wishlist for discount on Book 2" → nurture between launches → repeat to Book 3.
+  Lead with Book 1 as magnet (not 2). Don't make coupon the ONLY reason to join (add bonus content).
+- **Sales channels = Steam + Android** (NOT Amazon/ebook). Coupon mechanics differ:
+  - Steam: wishlist = email-equivalent. Valve forbids selling keys below Steam price off-platform,
+    so NO per-person codes — use a timed Steam SALE + email the list; free keys for top fans.
+  - Android/Google Play: Play Console PROMO CODES = real emailable coupons ✅ (cleanest coupon path).
+- **OPEN Q (ask Kay next time):** are the novellas the same as the book-games (e.g. EverThawe), or
+  separate prose stories? Book-games blur the gamers/readers wall — changes tagging.
+
+### Next steps for email work
+1. Confirm novellas = book-games vs prose (changes tagging).
+2. Sketch sequences: welcome → between-launch nurture → launch-day sale blast.
+3. Build Omnisend forms (gamers + readers, each auto-tagging) → add to relevant pages.
+4. Add end-screen/back-of-book CTAs in games → signup + Steam wishlist.
+
+---
+
 ## Last Session: 2026-05-26
 ## Status: Added "The Hefty Workload of Making a Game" — second Origin Stories post — live on localhost & verified. Not yet committed/pushed (Kay to review first).
 

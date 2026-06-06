@@ -25,7 +25,7 @@ const recentPosts = (await getCollection('blog'))
 			<!-- Hero -->
 			<section class="hero">
 				<p class="eyebrow">Oh KAY Gamers</p>
-				<h1>Narrative-Based Games</h1>
+				<h1>Story-Based Games for You</h1>
 				<p class="tagline">Stories that live inside you long after the screen goes dark.</p>
 			</section>
 
@@ -33,10 +33,9 @@ const recentPosts = (await getCollection('blog'))
 			<section class="intro-section">
 				<div class="intro-card">
 					<p class="intro-text">
-						I am a writer, a streamer, and more recently now a game developer.
-						Hello, my name is Kay, and I tend to go by <strong>Kay_1o1</strong> within the online world.
-						I love stories, and truthfully game development is just a visual way to make the stories
-						in my head come to life — while actively involving the people playing them.
+						A writer, streamer and game developer who goes by the name of <strong>Kay_1o1</strong> in the online world,
+						I am dedicated to making games and stories for your enjoyment! With my deep love of story-telling,
+						my goal is to leave your heart racing — either in fear or excitement — in this epic world of Oh KAY Gamers!
 					</p>
 					<div class="intro-links">
 						<a href="/games" class="btn btn-primary">See the Games</a>
@@ -164,11 +163,13 @@ const recentPosts = (await getCollection('blog'))
 
 	.eyebrow {
 		font-family: 'Cinzel', Georgia, serif;
-		font-size: 0.72em;
-		letter-spacing: 0.2em;
+		font-size: 1.4em;
+		font-weight: 700;
+		letter-spacing: 0.18em;
 		text-transform: uppercase;
 		color: var(--accent);
-		margin: 0 0 0.8em;
+		text-shadow: 0 0 18px rgba(139,0,0,0.55), 0 0 4px rgba(255,255,255,0.15);
+		margin: 0 0 0.6em;
 	}
 
 	.hero h1 {

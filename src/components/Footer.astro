@@ -5,6 +5,9 @@ const today = new Date();
 <footer>
 	<div class="footer-inner">
 		<span class="footer-brand"><span class="bracket">[</span>Oh KAY Gamers<span class="bracket">]</span></span>
+		<nav class="footer-links">
+			<a href="/privacy">Privacy Policy</a>
+		</nav>
 		<span class="footer-copy">&copy; {today.getFullYear()} — All rights reserved.</span>
 	</div>
 </footer>
@@ -34,6 +37,16 @@ const today = new Date();
 	}
 
 	.bracket {
+		color: var(--accent);
+	}
+
+	.footer-links a {
+		color: var(--gray-text);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	.footer-links a:hover {
 		color: var(--accent);
 	}
 

@@ -19,6 +19,7 @@ import Footer from '../components/Footer.astro';
 			<!-- ── HERO ── -->
 			<section class="hero">
 				<div class="hero-inner">
+					<p class="brand">Oh KAY Writers</p>
 					<p class="eyebrow">Neridia</p>
 					<h1>Door to the <span class="title-accent">EverThawe</span></h1>
 					<p class="tagline">
@@ -196,6 +197,17 @@ import Footer from '../components/Footer.astro';
 	.hero-inner {
 		max-width: 640px;
 		margin: 0 auto;
+	}
+
+	.brand {
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 1.4em;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--accent);
+		text-shadow: 0 0 18px rgba(139,0,0,0.55), 0 0 4px rgba(255,255,255,0.15);
+		margin: 0 0 0.5em;
 	}
 
 	.eyebrow {

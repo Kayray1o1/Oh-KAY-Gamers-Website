@@ -1,0 +1,151 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const contactEmail = 'ohkaygamersofficialdev@gmail.com';
+const lastUpdated = 'June 6, 2026';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Privacy Policy | Oh KAY Gamers"
+			description="How Oh KAY Gamers collects, uses, and protects your information."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main class="legal-page">
+
+			<div class="page-header">
+				<p class="eyebrow">The Boring (But Important) Bit</p>
+				<h1>Privacy Policy</h1>
+				<p class="subtitle">Last updated: {lastUpdated}</p>
+			</div>
+
+			<section class="legal-content">
+				<p class="dropcap">
+					Oh KAY Gamers (“we,” “I,” “Kay”) runs this website at ohkaygamers.co.za.
+					I care about your privacy and I keep things simple: I only collect what I
+					need, I never sell your details, and you can leave any time. Here's exactly
+					what happens with your information.
+				</p>
+
+				<h2>What I collect</h2>
+				<ul>
+					<li><strong>Your email address</strong> — only if you choose to sign up for updates (for example, as a founding reader of Door to the EverThawe).</li>
+					<li><strong>Basic usage data</strong> — like which pages are visited, through cookies, so I can understand what people enjoy and improve the site.</li>
+				</ul>
+
+				<h2>Why I collect it</h2>
+				<p>I use your email to send you things you asked for: news about my games and stories, early access, launch dates, discounts, and the occasional behind-the-scenes peek. That's it.</p>
+
+				<h2>The legal bit</h2>
+				<p>I only email you because you gave me permission (your consent) by signing up. You can take that permission back at any moment.</p>
+
+				<h2>Who helps me handle your data</h2>
+				<p>
+					I use <strong>Omnisend</strong> to store email addresses and send newsletters. When you sign up, your
+					email is stored securely on their service. Omnisend acts as my data processor and has its own privacy
+					policy you can read at
+					<a href="https://www.omnisend.com/privacy/" target="_blank" rel="noopener">omnisend.com/privacy</a>.
+					I don't share your information with anyone else, and I never sell it.
+				</p>
+
+				<h2>Cookies</h2>
+				<p>This site uses cookies to remember basic preferences and to understand how the site is used. You can turn cookies off in your browser settings — the site will still work.</p>
+
+				<h2>Your rights</h2>
+				<ul>
+					<li><strong>Unsubscribe</strong> — every email I send has an unsubscribe link at the bottom. One click and you're out.</li>
+					<li><strong>See your data</strong> — you can ask me what information I hold about you.</li>
+					<li><strong>Delete your data</strong> — you can ask me to delete it completely, and I will.</li>
+				</ul>
+
+				<h2>Keeping your data</h2>
+				<p>I keep your email only for as long as you want to hear from me. Unsubscribe or ask me to delete it, and it's gone.</p>
+
+				<h2>Children</h2>
+				<p>This site and its mailing list aren't aimed at children under 16. If you're under 16, please don't sign up without a parent or guardian's permission.</p>
+
+				<h2>Changes to this policy</h2>
+				<p>If I change how I handle your data, I'll update this page and change the “last updated” date at the top.</p>
+
+				<h2>Get in touch</h2>
+				<p>Questions about your privacy, or want your data removed? Email me at <a href={`mailto:${contactEmail}`}>{contactEmail}</a> and I'll sort it out.</p>
+			</section>
+
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.legal-page {
+		max-width: 760px;
+		margin: 0 auto;
+		padding: 3em 1.5em 5em;
+	}
+
+	.page-header {
+		text-align: center;
+		margin-bottom: 3em;
+	}
+
+	.eyebrow {
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 0.78em;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0 0 0.8em;
+	}
+
+	.page-header h1 {
+		font-size: 3em;
+		margin: 0 0 0.3em;
+		text-shadow: 0 0 50px rgba(139, 0, 0, 0.25);
+	}
+
+	.subtitle {
+		color: var(--gray-text);
+		font-style: italic;
+		margin: 0;
+	}
+
+	.legal-content {
+		line-height: 1.75;
+		color: var(--white);
+	}
+
+	.legal-content h2 {
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 1.35em;
+		color: var(--accent);
+		margin: 1.8em 0 0.5em;
+	}
+
+	.legal-content p,
+	.legal-content li {
+		color: var(--gray-text);
+	}
+
+	.legal-content ul {
+		padding-left: 1.2em;
+	}
+
+	.legal-content li {
+		margin-bottom: 0.5em;
+	}
+
+	.legal-content a {
+		color: var(--accent);
+		text-decoration: underline;
+	}
+
+	.dropcap {
+		font-size: 1.05em;
+	}
+</style>
