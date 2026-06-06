@@ -78,6 +78,23 @@ import Footer from '../components/Footer.astro';
 				</div>
 			</section>
 
+			<!-- FOUNDING READERS / EMAIL SIGNUP -->
+			<section class="section signup-section">
+				<div class="section-label">
+					<span class="label-icon">⬡</span> Founding Readers
+				</div>
+
+				<div class="card signup-card">
+					<p class="signup-lead">
+						Be the first through the door. Founding readers hear it from me
+						first — when the free demo and first book land, plus early access
+						and glimpses of Neridia as it's built.
+					</p>
+					<!-- Omnisend embedded form mounts here -->
+					<div id="omnisend-embedded-v2-6a2372dbbb32db4de5aabbab"></div>
+				</div>
+			</section>
+
 			<!-- ── STATUS & PLATFORMS ── -->
 			<section class="section">
 				<div class="section-label">
@@ -217,6 +234,23 @@ import Footer from '../components/Footer.astro';
 		text-transform: uppercase;
 		color: var(--accent);
 		margin: 0 0 0.8em;
+	}
+
+	.signup-card {
+		text-align: center;
+	}
+
+	.signup-lead {
+		max-width: 520px;
+		margin: 0 auto 1.5em;
+		color: var(--gray-text);
+		line-height: 1.7;
+	}
+
+	/* Skin the injected Omnisend form to match the dark theme */
+	.signup-card :global(#omnisend-embedded-v2-6a2372dbbb32db4de5aabbab) {
+		max-width: 480px;
+		margin: 0 auto;
 	}
 
 	.hero h1 {
