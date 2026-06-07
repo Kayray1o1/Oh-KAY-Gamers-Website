@@ -1,0 +1,163 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Join the EverThawe Founding Readers | Oh KAY Gamers"
+			description="Be the first through the door. Sign up to hear about the free Door to the EverThawe demo, the first book, and early glimpses of Neridia."
+		/>
+		<!-- Keep this page out of search + crawlers. It's a direct-link landing page. -->
+		<meta name="robots" content="noindex, nofollow" />
+	</head>
+	<body>
+		<main class="join-page">
+			<section class="join-card">
+				<p class="brand">Oh KAY Writers</p>
+				<p class="eyebrow">Neridia</p>
+				<h1>Door to the <span class="title-accent">EverThawe</span></h1>
+
+				<p class="lead">
+					Be the first through the door. Founding readers hear it from me
+					first — when the free demo and first book land, plus early access
+					and glimpses of Neridia as it's built.
+				</p>
+
+				<!-- Same Omnisend "Founding Readers" form used on /everthawe -->
+				<div class="form-mount">
+					<div id="omnisend-embedded-v2-6a2372dbbb32db4de5aabbab"></div>
+				</div>
+
+				<div class="explore">
+					<p class="explore-note">Already signed up? Have a look around.</p>
+					<a href="/" class="btn btn-primary">Explore Oh KAY Gamers →</a>
+					<a href="/everthawe" class="btn btn-ghost">More about EverThawe</a>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
+
+<style>
+	.join-page {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 2em 1em;
+	}
+
+	.join-card {
+		width: 100%;
+		max-width: 560px;
+		text-align: center;
+		background: var(--bg-card);
+		border: 1px solid rgba(139,0,0,0.2);
+		border-radius: 12px;
+		padding: 3em 2.6em;
+		box-shadow: 0 4px 40px rgba(139,0,0,0.12);
+	}
+
+	.brand {
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 1.3em;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--accent);
+		text-shadow: 0 0 18px rgba(139,0,0,0.55), 0 0 4px rgba(255,255,255,0.15);
+		margin: 0 0 0.4em;
+	}
+
+	.eyebrow {
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 0.75em;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0 0 0.6em;
+	}
+
+	h1 {
+		font-size: 2.8em;
+		line-height: 1.1;
+		margin: 0 0 0.6em;
+		text-shadow: 0 0 50px rgba(139,0,0,0.25);
+	}
+
+	.title-accent {
+		color: var(--accent);
+		font-style: italic;
+	}
+
+	.lead {
+		max-width: 460px;
+		margin: 0 auto 1.8em;
+		color: var(--gray-text);
+		line-height: 1.7;
+		font-size: 1.02em;
+	}
+
+	.form-mount {
+		max-width: 480px;
+		margin: 0 auto;
+	}
+
+	.explore {
+		margin-top: 2.4em;
+		padding-top: 1.8em;
+		border-top: 1px solid rgba(139,0,0,0.15);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.9em;
+	}
+
+	.explore-note {
+		font-size: 0.9em;
+		color: var(--gray-text);
+		margin: 0;
+		font-style: italic;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		padding: 0.7em 1.6em;
+		border-radius: 6px;
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 0.8em;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-decoration: none;
+		transition: all 0.2s;
+	}
+
+	.btn-primary {
+		background: var(--accent);
+		color: var(--white);
+		border: 1px solid rgba(185,28,28,0.6);
+	}
+	.btn-primary:hover {
+		background: var(--accent-bright);
+		color: var(--white);
+		box-shadow: 0 0 18px rgba(139,0,0,0.5);
+	}
+
+	.btn-ghost {
+		color: var(--gray-text);
+		border: 1px solid rgba(139,0,0,0.25);
+	}
+	.btn-ghost:hover {
+		color: var(--accent);
+		border-color: rgba(139,0,0,0.5);
+	}
+
+	@media (max-width: 600px) {
+		.join-card { padding: 2.2em 1.5em; }
+		h1 { font-size: 2.2em; }
+	}
+</style>
