@@ -5,7 +5,9 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 
-const recentPosts = (await getCollection('blog'))
+const gamingPosts = (await getCollection('gaming')).map(p => ({ ...p, section: 'gaming' }));
+const writingPosts = (await getCollection('writing')).map(p => ({ ...p, section: 'writing' }));
+const recentPosts = [...gamingPosts, ...writingPosts]
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.slice(0, 3);
 ---
@@ -110,7 +112,7 @@ const recentPosts = (await getCollection('blog'))
 					<ul class="blog-list">
 						{recentPosts.map((post) => (
 							<li>
-								<a href={`/blog/${post.id}/`} class="blog-card">
+								<a href={`/blog/${post.section}/${post.id}/`} class="blog-card">
 									{post.data.heroImage && (
 										<div class="blog-thumb">
 											<img src={post.data.heroImage.src} alt={post.data.title} />

@@ -1,30 +1,37 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseHead from '../../../components/BaseHead.astro';
-import Footer from '../../../components/Footer.astro';
-import Header from '../../../components/Header.astro';
-import FormattedDate from '../../../components/FormattedDate.astro';
+import BaseHead from '../../../../components/BaseHead.astro';
+import Footer from '../../../../components/Footer.astro';
+import Header from '../../../../components/Header.astro';
+import FormattedDate from '../../../../components/FormattedDate.astro';
+
+const SECTION_LABELS = { gaming: 'Gaming', writing: 'Writing' };
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))];
-
-	return categories.map(category => {
-		const slug = category.toLowerCase().replace(/\s+/g, '-');
-		const filtered = posts
-			.filter(p => p.data.category === category)
-			.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-		return {
-			params: { category: slug },
-			props: { categoryName: category, posts: filtered },
-		};
-	});
+	const sections = ['gaming', 'writing'] as const;
+	const paths = [];
+	for (const section of sections) {
+		const posts = await getCollection(section);
+		const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))];
+		for (const category of categories) {
+			const slug = category.toLowerCase().replace(/\s+/g, '-');
+			const filtered = posts
+				.filter(p => p.data.category === category)
+				.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+			paths.push({
+				params: { section, category: slug },
+				props: { categoryName: category, posts: filtered },
+			});
+		}
+	}
+	return paths;
 }
 
+const { section } = Astro.params;
 const { categoryName, posts } = Astro.props;
 
-// Build chip list (all categories) for navigation between them
-const allPosts = await getCollection('blog');
+// Build chip list (all categories in this section) for navigation between them
+const allPosts = await getCollection(section);
 const allCategories = [...new Set(allPosts.map(p => p.data.category).filter(Boolean))]
 	.map(name => ({
 		name,
@@ -37,25 +44,25 @@ const allCategories = [...new Set(allPosts.map(p => p.data.category).filter(Bool
 <html lang="en">
 	<head>
 		<BaseHead
-			title={`${categoryName} | Oh KAY Gamers`}
-			description={`All ${categoryName} posts from Oh KAY Gamers — narrative-driven indie horror coverage.`}
+			title={`${categoryName} | ${SECTION_LABELS[section]} | Oh KAY Gamers`}
+			description={`All ${categoryName} posts in the ${SECTION_LABELS[section]} section of Oh KAY Gamers.`}
 		/>
 	</head>
 	<body>
 		<Header />
 		<main class="blog-page">
 			<div class="blog-header">
-				<p class="eyebrow">Category</p>
+				<p class="eyebrow"><a href={`/blog/${section}/`} class="eyebrow-link">{SECTION_LABELS[section]}</a> / Category</p>
 				<h1>{categoryName}</h1>
 				<p class="subtitle">{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
 			</div>
 
 			<!-- Category Chips -->
 			<nav class="category-chips" aria-label="Browse by category">
-				<a href="/blog/" class="chip">All Posts <span class="chip-count">({allPosts.length})</span></a>
+				<a href={`/blog/${section}/`} class="chip">All Posts <span class="chip-count">({allPosts.length})</span></a>
 				{allCategories.map(cat => (
 					<a
-						href={`/blog/category/${cat.slug}/`}
+						href={`/blog/${section}/category/${cat.slug}/`}
 						class={`chip ${cat.name === categoryName ? 'chip-active' : ''}`}
 					>
 						{cat.name} <span class="chip-count">({cat.count})</span>
@@ -75,11 +82,11 @@ const allCategories = [...new Set(allPosts.map(p => p.data.category).filter(Bool
 							<div class="post-info">
 								{post.data.category && (
 									<a
-										href={`/blog/category/${post.data.category.toLowerCase().replace(/\s+/g, '-')}/`}
+										href={`/blog/${section}/category/${post.data.category.toLowerCase().replace(/\s+/g, '-')}/`}
 										class="post-category"
 									>{post.data.category}</a>
 								)}
-								<h2 class="post-title"><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2>
+								<h2 class="post-title"><a href={`/blog/${section}/${post.id}/`}>{post.data.title}</a></h2>
 								<p class="post-desc">{post.data.description}</p>
 								<p class="post-date"><FormattedDate date={post.data.pubDate} /></p>
 								{post.data.tags && (
@@ -121,6 +128,16 @@ const allCategories = [...new Set(allPosts.map(p => p.data.category).filter(Bool
 		text-transform: uppercase;
 		color: var(--accent);
 		margin: 0 0 0.8em;
+	}
+
+	.eyebrow-link {
+		color: var(--gray-text);
+		text-decoration: none;
+		transition: color 0.2s;
+	}
+
+	.eyebrow-link:hover {
+		color: var(--accent);
 	}
 
 	.blog-header h1 {
@@ -188,7 +205,7 @@ const allCategories = [...new Set(allPosts.map(p => p.data.category).filter(Bool
 		font-weight: 400;
 	}
 
-	/* ── Post List (mirrors /blog) ── */
+	/* ── Post List (mirrors section index) ── */
 	.post-list {
 		list-style: none;
 		padding: 0;

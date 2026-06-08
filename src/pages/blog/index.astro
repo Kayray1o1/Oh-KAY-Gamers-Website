@@ -5,21 +5,31 @@ import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 
-const posts = (await getCollection('blog'))
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const sortByDate = (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
 
-const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
-	.map(name => ({
-		name,
-		slug: name.toLowerCase().replace(/\s+/g, '-'),
-		count: posts.filter(p => p.data.category === name).length,
-	}));
+const gamingPosts = (await getCollection('gaming')).sort(sortByDate);
+const writingPosts = (await getCollection('writing')).sort(sortByDate);
+
+const sections = [
+	{
+		slug: 'gaming',
+		label: 'Gaming',
+		blurb: 'Dev logs, game reviews, and behind-the-scenes from the studio.',
+		posts: gamingPosts,
+	},
+	{
+		slug: 'writing',
+		label: 'Writing',
+		blurb: 'Fiction, story craft, and the worlds behind the games.',
+		posts: writingPosts,
+	},
+];
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title="Blog | Oh KAY Gamers" description="Dev logs, origin stories, and behind-the-scenes posts from Oh KAY Gamers." />
+		<BaseHead title="Blog | Oh KAY Gamers" description="Two corners of the same world — dev logs from the games, and the fiction behind them." />
 	</head>
 	<body>
 		<Header />
@@ -27,50 +37,37 @@ const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
 			<div class="blog-header">
 				<p class="eyebrow">Oh KAY Gamers</p>
 				<h1>Blog</h1>
-				<p class="subtitle">Dev logs, origin stories, and everything in between.</p>
+				<p class="subtitle">Two corners of the same world. Pick your side.</p>
 			</div>
 
-			<!-- Category Chips -->
-			<nav class="category-chips" aria-label="Browse by category">
-				<a href="/blog/" class="chip chip-active">All Posts <span class="chip-count">({posts.length})</span></a>
-				{categories.map(cat => (
-					<a href={`/blog/category/${cat.slug}/`} class="chip">
-						{cat.name} <span class="chip-count">({cat.count})</span>
-					</a>
-				))}
-			</nav>
-
-			<ul class="post-list">
-				{posts.map((post) => (
-					<li>
-						<div class="post-card">
-							{post.data.heroImage && (
-								<div class="post-thumb">
-									<img src={post.data.heroImage.src} alt={post.data.title} />
+			<div class="section-grid">
+				{sections.map((section) => {
+					const latest = section.posts[0];
+					return (
+						<a href={`/blog/${section.slug}/`} class="section-card">
+							{latest?.data.heroImage && (
+								<div class="section-thumb">
+									<img src={latest.data.heroImage.src} alt={latest.data.title} />
 								</div>
 							)}
-							<div class="post-info">
-								{post.data.category && (
-									<a
-										href={`/blog/category/${post.data.category.toLowerCase().replace(/\s+/g, '-')}/`}
-										class="post-category"
-									>{post.data.category}</a>
+							<div class="section-body">
+								<p class="section-eyebrow">{section.posts.length} {section.posts.length === 1 ? 'post' : 'posts'}</p>
+								<h2 class="section-title">{section.label}</h2>
+								<p class="section-blurb">{section.blurb}</p>
+								{latest ? (
+									<p class="section-latest">
+										Latest: <span>{latest.data.title}</span>
+										<span class="section-latest-date"><FormattedDate date={latest.data.pubDate} /></span>
+									</p>
+								) : (
+									<p class="section-latest section-empty">No posts yet — coming soon.</p>
 								)}
-								<h2 class="post-title"><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2>
-								<p class="post-desc">{post.data.description}</p>
-								<p class="post-date"><FormattedDate date={post.data.pubDate} /></p>
-								{post.data.tags && (
-									<div class="post-tags">
-										{post.data.tags.slice(0, 4).map(tag => (
-											<span class="tag">{tag}</span>
-										))}
-									</div>
-								)}
+								<span class="section-cta">Enter {section.label} →</span>
 							</div>
-						</div>
-					</li>
-				))}
-			</ul>
+						</a>
+					);
+				})}
+			</div>
 		</main>
 		<Footer />
 	</body>
@@ -78,7 +75,7 @@ const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
 
 <style>
 	.blog-page {
-		width: 860px;
+		width: 920px;
 		max-width: calc(100% - 2em);
 		margin: auto;
 		padding: 0 1em 5em;
@@ -113,181 +110,114 @@ const categories = [...new Set(posts.map(p => p.data.category).filter(Boolean))]
 		font-style: italic;
 	}
 
-	.post-list {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		flex-direction: column;
+	.section-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
 		gap: 1.8em;
 	}
 
-	.post-card {
+	.section-card {
 		position: relative;
 		display: flex;
-		gap: 1.8em;
+		flex-direction: column;
 		background: var(--bg-card);
 		border: 1px solid rgba(139,0,0,0.15);
-		border-radius: 10px;
-		padding: 1.6em;
+		border-radius: 12px;
+		overflow: hidden;
 		text-decoration: none;
-		transition: border-color 0.25s, box-shadow 0.25s;
+		transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
 	}
 
-	.post-card:hover {
-		border-color: rgba(139,0,0,0.4);
-		box-shadow: 0 4px 24px rgba(139,0,0,0.1);
+	.section-card:hover {
+		border-color: rgba(139,0,0,0.45);
+		box-shadow: 0 6px 30px rgba(139,0,0,0.14);
+		transform: translateY(-3px);
 	}
 
-	.post-card:hover .post-title a {
-		color: var(--accent);
-	}
-
-	.post-thumb {
-		flex-shrink: 0;
-		width: 180px;
-		height: 120px;
-		border-radius: 6px;
+	.section-thumb {
+		width: 100%;
+		height: 200px;
 		overflow: hidden;
 	}
 
-	.post-thumb img {
+	.section-thumb img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		transition: transform 0.4s;
 	}
 
-	.post-info {
+	.section-card:hover .section-thumb img {
+		transform: scale(1.04);
+	}
+
+	.section-body {
 		display: flex;
 		flex-direction: column;
-		gap: 0.4em;
-	}
-
-	/* ── Category Chips ── */
-	.category-chips {
-		display: flex;
-		flex-wrap: wrap;
 		gap: 0.5em;
-		justify-content: center;
-		margin-bottom: 2.8em;
-		padding: 0 0.5em;
+		padding: 1.8em;
 	}
 
-	.chip {
-		font-family: 'Cinzel', Georgia, serif;
-		font-size: 0.7em;
-		letter-spacing: 0.15em;
-		text-transform: uppercase;
-		padding: 0.6em 1.2em;
-		border-radius: 4px;
-		border: 1px solid rgba(139,0,0,0.3);
-		color: var(--gray-text);
-		background: transparent;
-		text-decoration: none;
-		transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
-		font-weight: 700;
-		white-space: nowrap;
-	}
-
-	.chip:hover {
-		border-color: var(--accent);
-		color: var(--white);
-		text-shadow: none;
-	}
-
-	.chip-active {
-		background: var(--accent);
-		color: var(--white);
-		border-color: rgba(185,28,28,0.6);
-		box-shadow: 0 0 14px rgba(139,0,0,0.25);
-	}
-
-	.chip-active:hover {
-		background: var(--accent-bright);
-		color: var(--white);
-	}
-
-	.chip-count {
-		opacity: 0.55;
-		font-size: 0.85em;
-		margin-left: 0.3em;
-		font-weight: 400;
-	}
-
-	.post-category {
-		position: relative;
-		z-index: 1;
+	.section-eyebrow {
 		font-family: 'Cinzel', Georgia, serif;
 		font-size: 0.65em;
 		letter-spacing: 0.18em;
 		text-transform: uppercase;
 		color: var(--accent);
-		text-decoration: none;
-		align-self: flex-start;
-		padding: 0.15em 0.5em;
-		margin-left: -0.5em;
-		border-radius: 3px;
-		transition: background 0.2s, color 0.2s;
+		margin: 0;
 	}
 
-	.post-category:hover {
-		background: rgba(139,0,0,0.15);
-		color: var(--white);
-		text-shadow: none;
-	}
-
-	.post-title {
-		font-size: 1.3em;
+	.section-title {
+		font-size: 1.9em;
 		margin: 0;
 		color: var(--white);
 	}
 
-	.post-title a {
-		color: inherit;
-		text-decoration: none;
-		transition: color 0.2s;
+	.section-card:hover .section-title {
+		color: var(--accent);
 	}
 
-	.post-title a::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		border-radius: 10px;
-	}
-
-	.post-desc {
-		font-size: 0.9em;
+	.section-blurb {
+		font-size: 0.92em;
 		color: var(--gray-text);
 		line-height: 1.6;
 		margin: 0;
 	}
 
-	.post-date {
-		font-size: 0.78em;
+	.section-latest {
+		font-size: 0.82em;
 		color: var(--gray-text);
-		opacity: 0.6;
-		margin: 0;
-	}
-
-	.post-tags {
+		margin: 0.6em 0 0;
 		display: flex;
-		flex-wrap: wrap;
-		gap: 0.4em;
-		margin-top: 0.2em;
+		flex-direction: column;
+		gap: 0.1em;
 	}
 
-	.tag {
-		font-size: 0.68em;
-		padding: 0.2em 0.7em;
-		border: 1px solid rgba(139,0,0,0.3);
-		border-radius: 4px;
+	.section-latest span:first-child {
+		color: var(--white);
+	}
+
+	.section-latest-date {
+		opacity: 0.55;
+		font-size: 0.92em;
+	}
+
+	.section-empty {
+		font-style: italic;
+		opacity: 0.7;
+	}
+
+	.section-cta {
+		font-family: 'Cinzel', Georgia, serif;
+		font-size: 0.72em;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
 		color: var(--accent);
-		background: rgba(139,0,0,0.06);
+		margin-top: 1em;
+		font-weight: 700;
 	}
 
-	@media (max-width: 600px) {
-		.post-card { flex-direction: column; }
-		.post-thumb { width: 100%; height: 180px; }
-		.chip { font-size: 0.65em; padding: 0.5em 1em; }
+	@media (max-width: 680px) {
+		.section-grid { grid-template-columns: 1fr; }
 	}
 </style>

@@ -1,5 +1,43 @@
 # Oh KAY Gamers — Claude Session Notes
 
+## Last Session: 2026-06-07
+## Status: Added /join signup landing page — committed (8a30af5), NOT yet deployed (Netlify credits low).
+
+### Changes this session (2026-06-07)
+- Added `src/pages/join.astro` — direct-link, form-first signup landing page for the
+  **Facebook Page "Sign Up" button**. Reuses the existing EverThawe "Founding Readers"
+  Omnisend form (`omnisend-embedded-v2-6a2372dbbb32db4de5aabbab`) so signups feed the
+  SAME list. Marked `noindex, nofollow`, NOT in nav (normal visitors won't see it).
+  Has an "Explore Oh KAY Gamers →" CTA for after signup. Build verified clean.
+- Committed locally (8a30af5). FB Page button → point at `ohkaygamers.co.za/join`.
+
+### 🔴 TO DO (next session / June 8)
+- [ ] **Netlify out of build credits** (only 9 left, ran out). `/join` is committed but
+      NOT live yet. Credits **renew June 8, 2026 (tomorrow)**. Once renewed:
+      push/trigger a Netlify deploy, then **verify `ohkaygamers.co.za/join` returns 200**
+      and the Omnisend form renders before telling Kay it's live.
+- [ ] After it's live, confirm the Facebook Page "Sign Up" button points to /join.
+- [ ] **Curate the first 3-4 Facebook posts with Kay** (marketing starts once /everthawe
+      is live). Suggested set: (1) world/map+lore post, (2) artwork post, (3) "what is
+      EverThawe" intro. Lead with visuals, link in comments.
+- [ ] (Optional) Exclude /join from `sitemap.xml` via an astro.config filter if Kay wants
+      it fully hidden (noindex already keeps it out of search).
+
+### 📋 Kay's Facebook Posting System (Neridia/EverThawe — 21 groups joined)
+Cadence: **3-4 posts/week** + **~10 min/day** commenting. Time-boxed (Kay is very busy).
+**RULE: never blast identical posts to all 21 groups at once** → FB spam flag (posts
+hidden, posting restrictions) + brand fatigue for people in overlapping groups.
+1. **Tier the 21 groups (one-time):** PROMO-OK (promo days/links allowed → post WITH
+   /everthawe link) vs ENGAGEMENT-ONLY (strict → only comment, or pure value/no link).
+2. **Stagger + vary, don't broadcast:** Mon Post A→~6-7 groups, Wed Post B→different
+   ~6-7, Fri Post C→rest. Tweak caption per group (even one different opening line resets
+   the "identical content" flag).
+3. **Upload images natively, put the link in the comments** (FB throttles off-platform
+   link posts; native map/art reaches far more people).
+Weekly load: ~15 min curate+stagger + 10 min/day comments.
+
+---
+
 ## Last Session: 2026-06-04
 ## Status: Link contrast fix DONE (committed+pushed cec5e16). Email marketing strategy brainstormed — planning only, nothing built.
 
