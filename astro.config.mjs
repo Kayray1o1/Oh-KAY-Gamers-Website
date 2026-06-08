@@ -9,6 +9,9 @@ import rehypeExternalLinks from 'rehype-external-links';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://ohkaygamers.co.za',
+	// Bind to IPv4 too — Windows browsers resolve localhost to 127.0.0.1,
+	// but Astro's default localhost bind was IPv6-only (::1), so the page wouldn't open.
+	server: { host: true },
 	integrations: [embeds(), mdx(), sitemap()],
 	markdown: {
 		rehypePlugins: [
