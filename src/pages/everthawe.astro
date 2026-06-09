@@ -32,6 +32,46 @@ import Footer from '../components/Footer.astro';
 				</div>
 			</section>
 
+			<!-- ── THE STORY ── -->
+			<section class="section">
+				<div class="section-label">
+					<span class="label-icon">✦</span> The Story
+				</div>
+
+				<div class="story-card">
+					<div class="story-cover">
+						<img
+							src="/images/everthawe-cover.png"
+							alt="Door to the EverThawe — Volume 1 book cover"
+							width="512"
+							height="800"
+							loading="lazy"
+						/>
+					</div>
+					<div class="story-text">
+						<blockquote class="story-quote">
+							“Play it careful, play it safe. That's what I always told
+							myself when entering this new, strange and nefarious world.
+							But time is running out. My sister grows sicker by the day.
+							I don't have time to play it carefully anymore. I'm going
+							to Rocktorr.”
+						</blockquote>
+						<p>
+							Time is running out for Lark Fox. Her sister is dying — and
+							there is no cure for her; not in this world anyhow. But after
+							a mysterious trip to a new cave in Ulthra, Lark's life was
+							turned upside down when she found herself in EverThawe: a
+							dark, twisted, and magical world.
+						</p>
+						<p>
+							She enters it when walking through a door, and leaves the
+							same way; never knowing when she will be taken from her world
+							or brought back.
+						</p>
+					</div>
+				</div>
+			</section>
+
 			<!-- ── WHAT IS IT ── -->
 			<section class="section">
 				<div class="section-label">
@@ -287,6 +327,61 @@ import Footer from '../components/Footer.astro';
 	/* ── Section ── */
 	.section {
 		margin-bottom: 4em;
+	}
+
+	/* ── Story (cover + blurb) ── */
+	.story-card {
+		display: grid;
+		grid-template-columns: 240px 1fr;
+		gap: 2.4em;
+		align-items: start;
+		background: var(--bg-card);
+		border: 1px solid rgba(139,0,0,0.2);
+		border-radius: 10px;
+		padding: 2em 2.4em;
+	}
+
+	.story-cover img {
+		width: 100%;
+		height: auto;
+		border-radius: 6px;
+		box-shadow: 0 10px 34px rgba(0,0,0,0.5),
+			0 0 24px rgba(139,0,0,0.25);
+		border: 1px solid rgba(212,175,55,0.25);
+	}
+
+	.story-quote {
+		margin: 0 0 1.2em;
+		padding-left: 1em;
+		border-left: 2px solid var(--accent);
+		font-family: 'Crimson Text', Georgia, serif;
+		font-style: italic;
+		font-size: 1.15em;
+		line-height: 1.75;
+		color: var(--white);
+	}
+
+	.story-text p {
+		font-size: 1.02em;
+		line-height: 1.8;
+		color: var(--gray-text);
+		margin: 0 0 1em;
+	}
+
+	.story-text p:last-child {
+		margin-bottom: 0;
+	}
+
+	@media (max-width: 600px) {
+		.story-card {
+			grid-template-columns: 1fr;
+			gap: 1.6em;
+			padding: 1.6em 1.4em;
+		}
+		.story-cover {
+			max-width: 220px;
+			margin: 0 auto;
+		}
 	}
 
 	.section-label {
